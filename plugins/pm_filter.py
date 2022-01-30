@@ -166,7 +166,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             title = query.message.chat.title
 
         else:
-            return await query.answer('Powered By @mf_Linkz)
+            return await query.answer('Powered By @mf_Linkz')
 
         st = await client.get_chat_member(grp_id, userid)
         if (st.status == "creator") or (str(userid) in ADMINS):
