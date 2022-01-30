@@ -414,7 +414,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode='html'
         )
-        await query.answer('Powered By @mf_Linkz)
+        await query.answer('Powered By @mf_Linkz')
     elif query.data == "help":
         buttons = [[
             InlineKeyboardButton('ᴍᴀɴᴜᴀʟ ғɪʟᴛᴇʀ 🔧', callback_data='manuelfilter'),
