@@ -110,7 +110,7 @@ async def send_for_index(bot, message):
         ],
         [
             InlineKeyboardButton('Reject Index',
-                                 callback_data=f'index#reject#{chat_id}#{message.message_id}#{message.from_user.id}'),
+                                 callback_data=f'index#reject#{chat_id}#{message.id}#{message.from_user.id}'),
         ]
     ]
     reply_markup = InlineKeyboardMarkup(buttons)
