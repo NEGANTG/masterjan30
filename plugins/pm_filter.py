@@ -763,7 +763,7 @@ async def advantage_spell_chok(msg):
     if not movielist:
         k = await msg.reply("I couldn't find anything related to that. Check your spelling")
         return
-    SPELL_CHECK[msg.message_id] = movielist
+    SPELL_CHECK[msg.id] = movielist
     btn = [[
         InlineKeyboardButton(
             text=movie.strip(),
