@@ -1,5 +1,5 @@
 import io
-from pyrogram import filters, Client
+from pyrogram import filters, Client, enums
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from database.filters_mdb import(
    add_filter,
@@ -112,7 +112,7 @@ async def addfilter(client, message):
     await message.reply_text(
         f"Filter for  `{text}`  added in  **{title}**",
         quote=True,
-        parse_mode="md"
+        parse_mode=enums.ParseMode.MARKDOWN
     )
 
 
@@ -177,7 +177,7 @@ async def get_all(client, message):
     await message.reply_text(
         text=filterlist,
         quote=True,
-        parse_mode="md"
+        parse_mode=enums.ParseMode.MARKDOWN
     )
         
 @Client.on_message(filters.command('del') & filters.incoming)

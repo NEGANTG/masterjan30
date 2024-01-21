@@ -1,5 +1,5 @@
 import os
-from pyrogram import Client, filters
+from pyrogram import filters, Client, enums
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
 from info import IMDB_TEMPLATE
 from utils import extract_user, get_file_id, get_poster, last_online
@@ -109,7 +109,7 @@ async def who_is(client, message):
             quote=True,
             reply_markup=reply_markup,
             caption=message_out_str,
-            parse_mode="html",
+            parse_mode=enums.ParseMode.HTML,
             disable_notification=True
         )
         os.remove(local_user_photo)
@@ -122,7 +122,7 @@ async def who_is(client, message):
             text=message_out_str,
             reply_markup=reply_markup,
             quote=True,
-            parse_mode="html",
+            parse_mode=enums.ParseMode.HTML,
             disable_notification=True
         )
     await status_message.delete()

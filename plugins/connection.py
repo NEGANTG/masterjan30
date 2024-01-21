@@ -1,4 +1,4 @@
-from pyrogram import filters, Client
+from pyrogram import filters, Client, enums
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from database.connections_mdb import add_connection, all_connections, if_active, delete_connection
 from info import ADMINS
@@ -58,13 +58,13 @@ async def addconnection(client, message):
                 await message.reply_text(
                     f"Successfully connected to **{title}**\nNow manage your group from my pm !",
                     quote=True,
-                    parse_mode="md"
+                    parse_mode=enums.ParseMode.MARKDOWN
                 )
                 if chat_type in ["group", "supergroup"]:
                     await client.send_message(
                         userid,
                         f"Connected to **{title}** !",
-                        parse_mode="md"
+                        parse_mode=enums.ParseMode.MARKDOWN
                     )
             else:
                 await message.reply_text(
