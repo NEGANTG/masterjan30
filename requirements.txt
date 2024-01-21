@@ -1,4 +1,4 @@
-git+https://github.com/TGExplore/pyrogram.git
+https://github.com/TelegramPlayGround/pyrogram/archive/unknown_errors.zip
 tgcrypto
 pymongo[srv]==3.12.3
 motor==2.5.1
