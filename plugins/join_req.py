@@ -71,18 +71,18 @@ async def join_reqs(bot: Client, join_req: ChatJoinRequest):
     #     os.execl(sys.executable, sys.executable, "bot.py")
 
 
-@Client.on_chat_member_updated(filters.chat(AUTH_CHANNEL if AUTH_CHANNEL else "self"))
-async def joined_chat(bot: Client, update: ChatMemberUpdated):
+# @Client.on_chat_member_updated(filters.chat(AUTH_CHANNEL if AUTH_CHANNEL else "self"))
+# async def joined_chat(bot: Client, update: ChatMemberUpdated):
     
-    from plugins.commands import FILE_CACHE, send_file
-    if FILE_CACHE.get(update.from_user.id, False):
-        file_id, pre, mid = FILE_CACHE[update.from_user.id]
-        await send_file(bot, update, file_id, pre)
-        FILE_CACHE.pop(update.from_user.id)
-        await bot.delete_messages(
-            update.from_user.id,
-            mid
-        )
+#     from plugins.commands import FILE_CACHE, send_file
+#     if FILE_CACHE.get(update.from_user.id, False):
+#         file_id, pre, mid = FILE_CACHE[update.from_user.id]
+#         await send_file(bot, update, file_id, pre)
+#         FILE_CACHE.pop(update.from_user.id)
+#         await bot.delete_messages(
+#             update.from_user.id,
+#             mid
+#         )
 
 
 @Client.on_message(filters.command("addchats") & filters.user(ADMINS))
