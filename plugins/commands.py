@@ -89,6 +89,8 @@ async def start(client, message):
         kk, file_id = f"{message.command[1]}".split("_", 1)
         pre = 'checksubp' if kk == 'filep' else 'checksub'
         join_status, req_id = await ForceSub(client, message, string=file_id, mode=pre)
+        if not join_status:
+            return
     if len(message.command) == 2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
         buttons = [[
             InlineKeyboardButton('➕ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘs ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
