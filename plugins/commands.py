@@ -85,7 +85,8 @@ async def start(client, message):
             )
         return
     if REQUEST:
-        kk, file_id = message.command[1].split("_", 1)
+        print(message.command)
+        kk, file_id = message.command[1].decode("utf-8", errors='ignore').split("_", 1)
         pre = 'checksubp' if kk == 'filep' else 'checksub'
         join_status, req_id = await ForceSub(client, message, string=file_id, mode=pre)
     if len(message.command) == 2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
