@@ -370,10 +370,14 @@ async def cb_handler(client: Client, query: CallbackQuery):
         except Exception as e:
             await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
     elif query.data.startswith("checksub"):
+        aproved = False
         user = await reqdb.get_user(query.from_user.id)
         if user and user["user_id"] == query.from_user.id:
             aproved = True
-        if (REQUEST and not aproved) or (AUTH_CHANNEL and not await is_subscribed(client, query)):
+        if REQUEST and not aproved:
+            await query.answer("I Like Your Smartness, But Don't Be Oversmart 😑", show_alert=True)
+            return
+        if not REQUEST and AUTH_CHANNEL and not await is_subscribed(client, query):
             await query.answer("I Like Your Smartness, But Don't Be Oversmart 😒", show_alert=True)
             return
         ident, file_id = query.data.split("#")
