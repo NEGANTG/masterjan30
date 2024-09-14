@@ -38,7 +38,8 @@ DATABASE_NAME = environ.get('DATABASE_NAME', "Rajappan")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
 # Others
-REQ_CHANNEL = int(environ.get('REQ_CHANNEL', -1001955779505))
+REQUEST = is_enabled((environ.get('REQUEST', "True")), True)
+REQ_CHANNEL = int(environ.get('REQ_CHANNEL', -1001179647934))
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', 0))
 SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'TeamEvamaria')
 P_TTI_SHOW_OFF = is_enabled((environ.get('P_TTI_SHOW_OFF', "False")), False)

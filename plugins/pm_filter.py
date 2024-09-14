@@ -9,7 +9,7 @@ import pyrogram
 from database.connections_mdb import active_connection, all_connections, delete_connection, if_active, make_active, \
     make_inactive
 from info import ADMINS, AUTH_CHANNEL, AUTH_USERS, CUSTOM_FILE_CAPTION, AUTH_GROUPS, P_TTI_SHOW_OFF, IMDB, \
-    SINGLE_BUTTON, SPELL_CHECK_REPLY, IMDB_TEMPLATE
+    SINGLE_BUTTON, SPELL_CHECK_REPLY, IMDB_TEMPLATE, REQUEST
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram import filters, Client, enums
 from pyrogram.errors import FloodWait, UserIsBlocked, MessageNotModified, PeerIdInvalid
@@ -22,7 +22,9 @@ from database.filters_mdb import (
     get_filters,
 )
 import logging
+from database.join_reqs import JoinReqs
 
+reqdb = JoinReqs()
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.ERROR)
 
@@ -368,7 +370,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
         except Exception as e:
             await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
     elif query.data.startswith("checksub"):
-        if AUTH_CHANNEL and not await is_subscribed(client, query):
+        user = await reqdb.get_user(query.from_user.id)
+        if user and user["user_id"] == query.from_user.id:
+            aproved = True
+        if (REQUEST and not aproved) or (AUTH_CHANNEL and not await is_subscribed(client, query)):
             await query.answer("I Like Your Smartness, But Don't Be Oversmart 😒", show_alert=True)
             return
         ident, file_id = query.data.split("#")
