@@ -103,16 +103,13 @@ async def ForceSub(bot: Client, message: Message, string: str = False, mode="che
         else:
             return True, 0
     except UserNotParticipant:
-        text="Please Join My Channel To Use This Feature"
+        text="__**Please Join My Updates Channel to use this Bot!**__"
         buttons = [
             [
-                InlineKeyboardButton("ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=invite_link)
+                InlineKeyboardButton("📢 Join Updates Channel", url=invite_link)
             ],
             [
-               InlineKeyboardButton("ᴍᴇ ᴊᴏɪɴᴇᴅ", callback_data=f"{mode}#{string}")
-            ],
-            [
-               InlineKeyboardButton("🤔 Hᴇʏ Bᴏᴛ....! Wʜʏ I'ᴍ ᴊᴏɪɴɪɴɢ", callback_data="neosub")
+               InlineKeyboardButton(" 🔄 Try Again", callback_data=f"{mode}#{string}")
             ]
         ]
         
