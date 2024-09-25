@@ -103,7 +103,7 @@ async def ForceSub(bot: Client, message: Message, string: str = False, mode="che
         else:
             return True, 0
     except UserNotParticipant:
-        text="__**Please Join My Updates Channel to use this Bot!**__"
+        text="<b><i>Please Join My Updates Channel to use this Bot!</i></b>"
         buttons = [
             [
                 InlineKeyboardButton("📢 Join Updates Channel", url=invite_link)
